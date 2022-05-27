@@ -47,5 +47,30 @@ namespace Plugins.DataStore.InMemory
 
             products.Add(product);
         }
+
+        public void UpdateProduct(Product product)
+        {
+            var productToUpdate = GetProductById(product.ProductId);
+
+            if (productToUpdate != null)
+            {
+                productToUpdate.Name = product.Name;
+                productToUpdate.CategoryId = product.CategoryId;
+                productToUpdate.Quantity = product.Quantity;
+                productToUpdate.Price = product.Price;
+            }
+        }
+
+        public Product GetProductById(int productId)
+        {
+            return products.FirstOrDefault(x => x.ProductId == productId);
+        }
+
+        public void DeleteProduct(int productId)
+        {
+            var productsToDelete = GetProductById(productId);
+
+            if(productsToDelete != null) products.Remove(productsToDelete);
+        }
     }
 }

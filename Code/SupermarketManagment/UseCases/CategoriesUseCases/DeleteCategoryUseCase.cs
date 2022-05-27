@@ -18,7 +18,7 @@ namespace UseCases
 
 
 
-        public void Delete(int categoryId)
+        public void Execute(int categoryId)
         {
             categoryRepository.DeleteCategory(categoryId);
         }
