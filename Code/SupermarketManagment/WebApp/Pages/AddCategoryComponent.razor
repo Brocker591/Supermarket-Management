@@ -9,6 +9,8 @@
 @if (category != null)
 {
     <EditForm Model="category" OnValidSubmit="OnValidSumit">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <ValidationSummary></ValidationSummary>
         <div class="form-group">
             <label for="name">Name</label>
             <InputText id="name" @bind-Value="category.Name" class="form-control"></InputText>
