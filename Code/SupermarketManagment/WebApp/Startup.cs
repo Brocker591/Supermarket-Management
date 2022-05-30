@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using UseCases;
 using UseCases.DataStorePluginInterfaces;
+using UseCases.ProductUseCases;
 using UseCases.UseCaseInterfaces;
 using WebApp.Data;
 
@@ -50,6 +51,7 @@ namespace WebApp
             services.AddTransient<IGetProductByIdUseCase, GetProductByIdUseCase>();
             services.AddTransient<IDeleteProductUseCase, DeleteProductUseCase>();
             services.AddTransient<IViewProductByCategoryId, ViewProductByCategoryId>();
+            services.AddTransient<ISellProductUseCase, SellProductUseCase>();
 
             
         }

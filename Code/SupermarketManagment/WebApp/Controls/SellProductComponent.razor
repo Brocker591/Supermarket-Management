@@ -1,4 +1,5 @@
 ﻿@inject UseCases.UseCaseInterfaces.IGetProductByIdUseCase GetProductByIdUseCase
+@inject UseCases.UseCaseInterfaces.ISellProductUseCase SellProductUseCase
 
 @if(SelectedProduct != null)
 {
@@ -62,6 +63,10 @@
 
             };
         }
+        else
+        {
+            productToSell = null;
+        }
 
     }
 
@@ -77,6 +82,7 @@
         {
             OnProductSold.InvokeAsync(productToSell);
             errorMessage = string.Empty;
+            SellProductUseCase.Execute(productToSell.ProductId, productToSell.Quantity.Value);
         }
         else
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UseCases
 {
-    public class SellProductUseCase
+    internal class RecordTransactionUseCase
     {
     }
 }
