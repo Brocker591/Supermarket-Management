@@ -11,17 +11,23 @@ namespace UseCases.ProductUseCases
     public class SellProductUseCase : ISellProductUseCase
     {
         public readonly IProductRepository productRepository;
-        public SellProductUseCase(IProductRepository productRepository)
+        private readonly IRecordTransactionUseCase recordTransactionUseCase;
+
+        public SellProductUseCase(IProductRepository productRepository, IRecordTransactionUseCase recordTransactionUseCase)
         {
             this.productRepository = productRepository;
+            this.recordTransactionUseCase = recordTransactionUseCase;
         }
-        public void Execute(int productId, int quantityToSell)
+        public void Execute(string cashierName, int productId, int quantityToSell)
         {
             var product = productRepository.GetProductById(productId);
             if (product == null) return;
 
+            recordTransactionUseCase.Execute(cashierName, productId, quantityToSell);
+
             product.Quantity -= quantityToSell;
             productRepository.UpdateProduct(product);
+            
         }
     }
 }
