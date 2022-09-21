@@ -46,6 +46,13 @@ namespace WebApp
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOnly", p => p.RequireClaim("Position", "Admin"));
+                options.AddPolicy("ChashierOnly", p => p.RequireClaim("Position", "Cashier"));
+            });
+
+
             //Dependency Injection for In-Memory Data Store
             //services.AddScoped<ICategoryRepository, CategoryInMemoryRepository>();
             //services.AddScoped<IProductRepository, ProductInMemoryRepository>();
@@ -98,8 +105,12 @@ namespace WebApp
 
             app.UseRouting();
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages();
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });
