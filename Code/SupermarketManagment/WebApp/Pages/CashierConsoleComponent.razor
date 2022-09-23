@@ -21,7 +21,7 @@
 
     <br/>
     <div class="row">
-        <div class="col">
+        <div class="col-4">
             <SelectProductForSellingComponent OnProductSelected="SelectProduct"></SelectProductForSellingComponent>
             <br/>
             <SellProductComponent 
@@ -30,6 +30,7 @@
             OnProductSold="SellProduct"></SellProductComponent>
         </div>
         <div class="col">
+            <br/>
             <TodayTransactionsComponent @ref="transactionsComponent"></TodayTransactionsComponent>
         </div>
     </div>

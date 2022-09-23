@@ -1,18 +1,29 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+<header class="site-header sticky-top py-1">
+    <nav class="container d-flex flex-column flex-md-row justify-content-between">
 
-    <div class="main">
-        <div class="top-row px-4">
-            <LoginDisplay></LoginDisplay>
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
+        <NavLink class="py-2 d-none d-md-inline-block" href="" Match="NavLinkMatch.All">
+            <span class="oi oi-home" aria-hidden="true"></span> Home
+        </NavLink>
+        <NavLink class="py-2 d-none d-md-inline-block" href="cashier_console">
+            <span class="oi oi-cart" aria-hidden="true"></span> Sell
+        </NavLink>
+        <NavLink class="py-2 d-none d-md-inline-block" href="categories">
+            <span class="oi oi-plus" aria-hidden="true"></span> Categories
+        </NavLink>
+        <NavLink class="py-2 d-none d-md-inline-block" href="products">
+            <span class="oi oi-laptop" aria-hidden="true"></span> Products
+        </NavLink>
+        <NavLink class="py-2 d-none d-md-inline-block" href="transactions">
+            <span class="oi oi-document" aria-hidden="true"></span> Reports
+        </NavLink>
 
-        <div class="content px-4">
-            @Body
-        </div>
-    </div>
-</div>
+        <LoginDisplay></LoginDisplay>
+    </nav>
+</header>
+
+<main class="content px-4">
+    @Body
+</main>
+

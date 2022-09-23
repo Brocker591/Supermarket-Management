@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using UseCases;
 using UseCases.DataStorePluginInterfaces;
 using UseCases.ProductUseCases;
+using UseCases.Transactions;
 using UseCases.UseCaseInterfaces;
 using WebApp.Data;
 
@@ -49,7 +50,7 @@ namespace WebApp
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("AdminOnly", p => p.RequireClaim("Position", "Admin"));
-                options.AddPolicy("ChashierOnly", p => p.RequireClaim("Position", "Cashier"));
+                options.AddPolicy("CashierOnly", p => p.RequireClaim("Position", "Cashier"));
             });
 
 
